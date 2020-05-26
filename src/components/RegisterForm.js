@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import * as yup from 'yup';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -17,6 +18,32 @@ const RegisterForm = () => {
     name: '',
     businessName: '',
     terms: '',
+  });
+
+  const registerSchema = yup.object().shape({
+    username: yup
+      .string()
+      .min(2, 'Username is required')
+      .required('Username is required'),
+    password: yup
+      .string()
+      .min(8,'Password must be at least 8 characters long')
+      .required('Password is required'),
+    email: yup
+      .string()
+      .required('Email is required'),
+    name: yup
+      .string()
+      .min(3, 'Please enter your first and last name')
+      .required('Name is required'),
+    businessName: yup
+      .string()
+      .min(3, 'Please enter your business name')
+      .required('Business name is required')
+    terms: yup
+    .boolean(true)
+    
+
   });
 
 
