@@ -1,6 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const RegisterForm = () => {
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    email: '',
+    name: '',
+    businessName: '',
+    terms: '',
+  });
+  
   return (
     <div>
       <h2> Register </h2>
@@ -16,7 +25,7 @@ const RegisterForm = () => {
           maxLength='25'
           />
         </label>
-        
+
         <label>Password:&nbsp;
          <input
           type='text'
