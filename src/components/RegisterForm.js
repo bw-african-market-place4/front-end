@@ -10,7 +10,16 @@ const RegisterForm = () => {
     terms: '',
   });
 
-  
+  const [errors, setErrors] = useState({
+    username: '',
+    password: '',
+    email: '',
+    name: '',
+    businessName: '',
+    terms: '',
+  });
+
+
 
   //onChange Event
   const onChange = (e) => {
@@ -20,6 +29,11 @@ const RegisterForm = () => {
     })
   }
 
+  //onSubmit Event
+
+  const onSubmit = () => {
+    console.log(`Sucess!`)
+  }
   return (
     <div>
       <h2> Register </h2>
@@ -100,7 +114,10 @@ const RegisterForm = () => {
           />
         </label>
 
+        <button onClick={onSubmit}>Submit</button>
       </form>
+      Already have a login? <a href='#'>Click here</a>
+
     </div>
   )
 }
