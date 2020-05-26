@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
+//import axios from 'axios';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,8 @@ const RegisterForm = () => {
     terms: '',
   });
 
+  const [disabled, setDisabled] = useState(true);
+
   const registerSchema = yup.object().shape({
     username: yup
       .string()
@@ -27,10 +30,13 @@ const RegisterForm = () => {
       .required('Username is required'),
     password: yup
       .string()
-      .min(8,'Password must be at least 8 characters long')
+      .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        "Password must be at least 8 characters, with one uppercase (ABC), one lowercase (abc), one number (1234) and one special case character (!*%$#^*,etc ...)"
+      )
       .required('Password is required'),
     email: yup
       .string()
+      .email('Please use a valid email address')
       .required('Email is required'),
     name: yup
       .string()
@@ -39,14 +45,19 @@ const RegisterForm = () => {
     businessName: yup
       .string()
       .min(3, 'Please enter your business name')
-      .required('Business name is required')
+      .required('Business name is required'),
     terms: yup
-    .boolean(true)
-    
-
+    .boolean(true,'Please accept the Terms of Service')
+    .required('Accepting the Terms of Service is required')
   });
 
-
+  //check to see if form is valid
+  useEffect(() => {
+    console.log('register form state changed');
+    registerSchema.isValid(formData).then(valid => {
+      setDisabled(!valid);
+    })
+  })
 
   //onChange Event
   const onChange = (e) => {
@@ -140,8 +151,17 @@ const RegisterForm = () => {
           onChange={onChange}
           />
         </label>
+        <div className='form-errors'>
+          {errors.username}
+          {errors.password}
+          {errors.name}
+          {errors.businessName}
+          {errors.email}
+          {errors.terms}
 
-        <button onClick={onSubmit}>Submit</button>
+        </div>
+
+        <button onClick={onSubmit} disabled={disabled}>Submit</button>
       </form>
       Already have a login? <a href='#'>Click here</a>
 
