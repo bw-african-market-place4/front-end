@@ -10,6 +10,9 @@ const RegisterForm = () => {
     terms: '',
   });
 
+  
+
+  //onChange Event
   const onChange = (e) => {
     setFormData({
       ...formData,
@@ -24,7 +27,7 @@ const RegisterForm = () => {
         <label>
           Username:&nbsp;
           <input
-         // value={formData.username}
+          value={formData.username}
           type='text'
           name='username'
           id='username'
@@ -37,10 +40,10 @@ const RegisterForm = () => {
 
         <label>Password:&nbsp;
          <input
-         // value={formData.password}
+          value={formData.password}
           type='password'
-          name='username'
-          id='username'
+          name='password'
+          id='password'
           placeholder='Enter your password'
           minLength='2'
           maxLength='25'
@@ -50,10 +53,10 @@ const RegisterForm = () => {
 
         <label>Email:&nbsp;
           <input
-          // value={formData.email}
+          value={formData.email}
           type='text'
-          name='username'
-          id='username'
+          name='email'
+          id='email'
           placeholder='Enter your email'
           minLength='2'
           maxLength='25'
@@ -63,10 +66,10 @@ const RegisterForm = () => {
 
         <label>Name:&nbsp;
           <input
-          // value={formData.name}
+          value={formData.name}
           type='text'
-          name='username'
-          id='username'
+          name='name'
+          id='name'
           placeholder='Enter your name'
           minLength='2'
           maxLength='25'
@@ -76,10 +79,10 @@ const RegisterForm = () => {
 
         <label>Business Name:&nbsp;
           <input
-          // value={formData.businessName}
+          value={formData.businessName}
           type='text'
-          name='username'
-          id='username'
+          name='businessName'
+          id='businessName'
           placeholder='Enter your business name'
           minLength='2'
           maxLength='25'
@@ -92,6 +95,7 @@ const RegisterForm = () => {
           type='checkbox'
           name='terms'
           id='terms'
+          checked={formData.terms}
           onChange={onChange}
           />
         </label>
