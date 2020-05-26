@@ -9,7 +9,14 @@ const RegisterForm = () => {
     businessName: '',
     terms: '',
   });
-  
+
+  const onChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value
+    })
+  }
+
   return (
     <div>
       <h2> Register </h2>
@@ -17,56 +24,66 @@ const RegisterForm = () => {
         <label>
           Username:&nbsp;
           <input
+         // value={formData.username}
           type='text'
           name='username'
           id='username'
           placeholder='Enter your username'
           minLength='2'
           maxLength='25'
+          onChange={onChange}
           />
         </label>
 
         <label>Password:&nbsp;
          <input
-          type='text'
+         // value={formData.password}
+          type='password'
           name='username'
           id='username'
           placeholder='Enter your password'
           minLength='2'
           maxLength='25'
+          onChange={onChange}
           />
         </label>
 
         <label>Email:&nbsp;
           <input
+          // value={formData.email}
           type='text'
           name='username'
           id='username'
           placeholder='Enter your email'
           minLength='2'
           maxLength='25'
+          onChange={onChange}
           />
         </label>
 
         <label>Name:&nbsp;
           <input
+          // value={formData.name}
           type='text'
           name='username'
           id='username'
           placeholder='Enter your name'
           minLength='2'
           maxLength='25'
+          onChange={onChange}
           />
         </label>
 
         <label>Business Name:&nbsp;
           <input
+          // value={formData.businessName}
           type='text'
           name='username'
           id='username'
           placeholder='Enter your business name'
           minLength='2'
           maxLength='25'
+          onChange={onChange}
           />
         </label>
 
@@ -75,6 +92,7 @@ const RegisterForm = () => {
           type='checkbox'
           name='terms'
           id='terms'
+          onChange={onChange}
           />
         </label>
 
