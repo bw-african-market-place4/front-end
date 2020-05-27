@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import axios from 'axios'
 import * as yup from 'yup';
-import { Link } from 'react-router-dom'
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 //setting initial look of login form
 const initialLoginForm = { //initial State
@@ -46,6 +46,7 @@ const Login = (props) => {
     })
   }, [login]) //focuses on login state
 
+  //when inouts change event handler
   const onChange = e => {
     e.persist();
     //setLogin {copy login state, event target's name is event target's value}
@@ -65,9 +66,57 @@ const Login = (props) => {
     })
   };
 
+  //when Login submit button is pressed
+
+  const onSubmit = e => {
+    e.preventDefault();
+    console.log('Success!!')
+    alert('Submission succedded!'); //erase later, just a check to see if working
+    //axios goes here commented out til i get correct url
+    //axios.post('url', login)
+    //.then(res => {
+      //axios stuff
+    //})
+    //.catch(err => {
+      //console.log('Login was not successful', err);
+    //})
+  };
 
   return (
-    <div>
+    <div className='container'>
+      <h1>Login</h1>
+      <form onSubmit={onSubmit}>
+        <div className='form-area'>
+          <label>Username:&nbsp;</label>
+          <input
+          placeholder='username'
+          onChange={onChange}
+          type='text'
+          name='username'
+          value={login.username}
+          />
+
+          <label>Password:&nbsp;</label>
+          <input
+          placeholder='password'
+          onChange={onChange}
+          type='password'
+          name='password'
+          value={login.password}
+          />
+          {/* //add on click event that links to whatever profile page */}
+          <button className='submitButton'
+          disabled={!btnEnable} type='submit'> Login</button>
+          <div className='form-errors'> {loginErrors.username} </div>
+          <div className='form-errors'> {loginErrors.password} </div>
+
+        </div>
+      </form>
+
+      <div className='register'>
+        {/* //add link to Register here using Link to after register pages is working */}
+        No account?  Register here.
+      </div>
       
     </div>
   )
