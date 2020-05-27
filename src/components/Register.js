@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ContainerDiv } from '../styled/Styled';
+import { ContainerFormDiv, StyleInput, StyleLabel, StyleError, StyleP } from '../styled/Styled';
 //import axios from 'axios'
 import * as yup from 'yup';
 //import { BrowserRouter as Router, Link } from 'react-router-dom'
@@ -21,7 +21,7 @@ const initialErrors = {
   username:'A username is required',
   password:'A password is required',
   name: 'A name is required',
-  email: 'An email ir required',
+  email: 'An email is required',
   businessName: 'A business name is required',
   terms: 'Terms of Service must be accepted'
   //need help with terms checkbox
@@ -118,12 +118,12 @@ const Register = (props) => {
   };
 
   return (
-    <ContainerDiv>
+    <ContainerFormDiv>
       <h1>Register</h1>
       <form onSubmit={onSubmit}>
         <div className='form-area'>
-          <label>Username:&nbsp;</label>
-          <input
+          <StyleLabel>Username:&nbsp;</StyleLabel>
+          <StyleInput
           placeholder='username'
           onChange={onChange}
           type='text'
@@ -131,8 +131,8 @@ const Register = (props) => {
           value={reg.username}
           />
 
-          <label>Password:&nbsp;</label>
-          <input
+          <StyleLabel>Password:&nbsp;</StyleLabel>
+          <StyleInput
           placeholder='password'
           onChange={onChange}
           type='password'
@@ -140,17 +140,17 @@ const Register = (props) => {
           value={reg.password}
           />
 
-          <label>Name:&nbsp;</label>
-          <input
-          placeholder='Fluffy McFlooferbottom'
+          <StyleLabel>Name:&nbsp;</StyleLabel>
+          <StyleInput
+          placeholder='Fluffy McKitty'
           onChange={onChange}
           type='text'
           name='name'
           value={reg.name} 
           />
 
-          <label>Business Name:&nbsp;</label>
-          <input
+          <StyleLabel>Business Name:&nbsp;</StyleLabel>
+          <StyleInput
           placeholder='Catnip'
           onChange={onChange}
           type='text'
@@ -158,8 +158,8 @@ const Register = (props) => {
           value={reg.businessName} 
           />
 
-          <label>Email:&nbsp;</label>
-          <input
+          <StyleLabel>Email:&nbsp;</StyleLabel>
+          <StyleInput
           placeholder='cats@arecute.com'
           onChange={onChange}
           type='email'
@@ -167,35 +167,35 @@ const Register = (props) => {
           value={reg.email} 
           />
 
-          
-          <input
+          <input 
           onChange={onChange}
           type='checkbox'
           name='terms'
           checked={reg.terms}
           />
-          <label>&nbsp; Terms of Service</label> 
+
+          <StyleLabel>&nbsp; Do you accept to the Terms of Service?</StyleLabel> 
 
           {/* //add on click event that links to whatever profile page */}
-          <button className='submitButton'
-          disabled={!btnEnable} type='submit'> Register</button>
-          <div className='form-errors'> {regErrors.username} </div>
-          <div className='form-errors'> {regErrors.password} </div>
-          <div className='form-errors'> {regErrors.name} </div>
-          <div className='form-errors'> {regErrors.businessName} </div>
-          <div className='form-errors'> {regErrors.email} </div>
-          <div className='form-errors'> {regErrors.terms} </div>
-        
+          <div><button className='submitButton'
+          disabled={!btnEnable} type='submit'> Register</button></div>
+          <StyleError> {regErrors.username} </StyleError>
+          <StyleError> {regErrors.password} </StyleError>
+          <StyleError> {regErrors.name} </StyleError>
+          <StyleError> {regErrors.businessName} </StyleError>
+          <StyleError> {regErrors.email} </StyleError>
+          
+       
 
         </div>
       </form>
 
-      <div>
-        {/* //add link to Login  here using Link to after register pages is working */}
+      <StyleP>
+     
         No account?  <Link to='/'>Login here.</Link>
-      </div>
+      </StyleP>
       
-    </ContainerDiv>
+    </ContainerFormDiv>
   )
 }
 

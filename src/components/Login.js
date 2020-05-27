@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import { ContainerDiv } from '../styled/Styled'
+import { ContainerFormDiv, StyleP, StyleError, StyleInput, StyleLabel } from '../styled/Styled'
 //import axios from 'axios'
 import * as yup from 'yup';
 
@@ -85,12 +85,12 @@ const Login = (props) => {
   };
 
   return (
-    <ContainerDiv>
+    <ContainerFormDiv>
       <h1>Login</h1>
       <form onSubmit={onSubmit}>
         <div className='form-area'>
-          <label>Username:&nbsp;</label>
-          <input
+          <StyleLabel>Username:&nbsp;</StyleLabel>
+          <StyleInput
           placeholder='username'
           onChange={onChange}
           type='text'
@@ -98,8 +98,8 @@ const Login = (props) => {
           value={login.username}
           />
 
-          <label>Password:&nbsp;</label>
-          <input
+          <StyleLabel>Password:&nbsp;</StyleLabel>
+          <StyleInput
           placeholder='password'
           onChange={onChange}
           type='password'
@@ -109,18 +109,18 @@ const Login = (props) => {
           {/* //add on click event that links to whatever profile page */}
           <button className='submitButton'
           disabled={!btnEnable} type='submit'> Login</button>
-          <div className='form-errors'> {loginErrors.username} </div>
-          <div className='form-errors'> {loginErrors.password} </div>
+          <StyleError> {loginErrors.username} </StyleError>
+          <StyleError> {loginErrors.password} </StyleError>
 
         </div>
       </form>
 
-      <div className='register'>
+      <StyleP>
         {/* //add link to Register here using Link to after register pages is working */}
         No account?  <Link to='/register'>Register here</Link>.
-      </div>
+      </StyleP>
       
-    </ContainerDiv>
+    </ContainerFormDiv>
   )
 }
 
