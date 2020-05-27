@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 //import axios from 'axios'
 import * as yup from 'yup';
 //import { BrowserRouter as Router, Link } from 'react-router-dom'
@@ -183,7 +184,7 @@ const Register = (props) => {
 
       <div>
         {/* //add link to Login  here using Link to after register pages is working */}
-        No account?  Login here.
+        No account?  <Link to='/'>Login here.</Link>
       </div>
       
     </div>

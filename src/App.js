@@ -1,15 +1,19 @@
 import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Register from './components/Register';
 import Login from './components/Login';
 
 function App() {
   return (
+    <Router>
     <div className="App">
-  <h1>Login / Register from will go here</h1>
-  <Register />
-  <Login />
+
+  <Route exact path='/' component={Login} />
+  <Route exact path='/register' component={Register} />
+ 
     </div>
+    </Router>
   );
 }
 

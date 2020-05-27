@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 //import axios from 'axios'
 import * as yup from 'yup';
-//import { BrowserRouter as Router, Link } from 'react-router-dom'
+
 
 //setting initial look of login form
 const initialLoginForm = { //initial State
@@ -115,7 +116,7 @@ const Login = (props) => {
 
       <div className='register'>
         {/* //add link to Register here using Link to after register pages is working */}
-        No account?  Register here.
+        No account?  <Link to='/register'>Register here</Link>.
       </div>
       
     </div>
