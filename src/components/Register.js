@@ -6,16 +6,23 @@ import * as yup from 'yup';
 //setting initial look of login form
 const initialRegForm = { //initial State
   username: '',
-  password: ''
+  password: '',
+  name: '',
+  email: '',
+  businessName: '',
+  terms: ''
+  //need help with terms checkbox
 }
 
 //setting initial errors of form with placeholders(?)
 const initialErrors = {
   username:'A username is required',
   password:'A password is required',
-  // name: 'A name is required',
-  // email: 'An email ir required',
-  // businessName: 'A business name is required',
+  name: 'A name is required',
+  email: 'An email ir required',
+  businessName: 'A business name is required',
+  terms: 'Terms of Service must be accepted'
+  //need help with terms checkbox
 }
 
 //schema of Login form with yup validation
@@ -29,14 +36,22 @@ const regSchema = yup.object().shape({
   .string()
   .min(8, 'Password must be at least 8 characters')
   .required('Password is required'),
-  // name: yup
-  // .string()
-  // .min(3, 'Name must be at least 3 characters')
-  // .required('Username is required'),
-  // businessName: yup
-  // .string()
-  // .min(3, 'The business name must be at least 3 characters')
-  // .required('Username is required'),
+  name: yup
+  .string()
+  .min(3, 'Please type your first and last name')
+  .required('Name is required'),
+  businessName: yup
+  .string()
+  .min(3, 'The business name must be at least 3 characters')
+  .required('The business name is required'),
+  email: yup
+  .string()
+  .email('The email must be valid')
+  .required('Email is required'),
+  //terms goes here terms: yup.bool().oneOf(true), 'message')
+  terms: yup
+  .bool()
+  .oneOf([true], 'Terms of Service must be accepted')
 });
 
 const Register = (props) => {
@@ -116,13 +131,50 @@ const Register = (props) => {
           value={reg.password}
           />
 
+          <label>Name:&nbsp;</label>
+          <input
+          placeholder='Fluffy McFlooferbottom'
+          onChange={onChange}
+          type='text'
+          name='name'
+          value={reg.name} 
+          />
 
+          <label>Business Name:&nbsp;</label>
+          <input
+          placeholder='Catnip'
+          onChange={onChange}
+          type='text'
+          name='businessName'
+          value={reg.businessName} 
+          />
+
+          <label>Email:&nbsp;</label>
+          <input
+          placeholder='cats@arecute.com'
+          onChange={onChange}
+          type='email'
+          name='email'
+          value={reg.email} 
+          />
+
+          
+          <input
+          onChange={onChange}
+          type='checkbox'
+          name='terms'
+          value={reg.terms} 
+          />
+          <label>&nbsp; Terms of Service</label>
 
           {/* //add on click event that links to whatever profile page */}
           <button className='submitButton'
           disabled={!btnEnable} type='submit'> Register</button>
           <div className='form-errors'> {regErrors.username} </div>
           <div className='form-errors'> {regErrors.password} </div>
+          <div className='form-errors'> {regErrors.name} </div>
+          <div className='form-errors'> {regErrors.businessName} </div>
+          <div className='form-errors'> {regErrors.email} </div>
 
         </div>
       </form>
