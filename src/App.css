@@ -2,3 +2,7 @@
   text-align: center;
 }
 
+.form-errors {
+  color: red;
+  background-color: #333;
+}

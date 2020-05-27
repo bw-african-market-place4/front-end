@@ -176,6 +176,7 @@ const Register = (props) => {
           <div className='form-errors'> {regErrors.password} </div>
           <div className='form-errors'> {regErrors.name} </div>
           <div className='form-errors'> {regErrors.businessName} </div>
+          <div className='form-errors'> {regErrors.email} </div>
           {/* <div className='form-errors'> {regErrors.terms} </div>  */}
         
 
