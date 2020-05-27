@@ -12,7 +12,7 @@ const initialRegForm = { //initial State
   name: '',
   email: '',
   businessName: '',
-  terms: ''
+  terms: false
   //need help with terms checkbox
 }
 
@@ -51,9 +51,9 @@ const regSchema = yup.object().shape({
   .email('The email must be valid')
   .required('Email is required'),
   //terms goes here terms: yup.bool().oneOf(true), 'message')
-  // terms: yup
-  // .bool()
-  // .oneOf([true], 'Terms of Service must be accepted')
+  terms: yup
+  .bool()
+  .oneOf([true], 'Terms of Service must be accepted')
 });
 
 const Register = (props) => {
@@ -74,11 +74,18 @@ const Register = (props) => {
     })
   }, [reg]) //focuses on login state
 
+//for checkbox validation
+//const onCheckbox
+
   //when inouts change event handler
   const onChange = e => {
     e.persist();
     //setLogin {copy login state, event target's name is event target's value}
-    setReg({...reg, [e.target.name]: e.target.value });
+    if(e.target.name === 'terms') {
+      setReg({...reg, [e.target.name]: e.target.checked });
+
+    }else {
+    setReg({...reg, [e.target.name]: e.target.value });}
 
     //yup validation
 
@@ -161,14 +168,13 @@ const Register = (props) => {
           />
 
           
-          {/* <input
+          <input
           onChange={onChange}
           type='checkbox'
           name='terms'
           checked={reg.terms}
-          value={reg.terms} 
           />
-          <label>&nbsp; Terms of Service</label> */}
+          <label>&nbsp; Terms of Service</label> 
 
           {/* //add on click event that links to whatever profile page */}
           <button className='submitButton'
@@ -178,7 +184,7 @@ const Register = (props) => {
           <div className='form-errors'> {regErrors.name} </div>
           <div className='form-errors'> {regErrors.businessName} </div>
           <div className='form-errors'> {regErrors.email} </div>
-          {/* <div className='form-errors'> {regErrors.terms} </div>  */}
+          <div className='form-errors'> {regErrors.terms} </div>
         
 
         </div>

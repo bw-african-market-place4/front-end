@@ -44,3 +44,6 @@ color: #FEFEFE;
 `
 //Login page
 
+
+//register page
+
