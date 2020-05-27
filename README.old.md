@@ -7,5 +7,7 @@ Tasks 05/26/2020
 - set onChange event handler for base register form
 - installed yup for validation
 - installed axios for api
+- Login page works need to add links to sucessful submission, using axios, and links to login page
+
 
 

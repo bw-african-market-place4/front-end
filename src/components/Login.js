@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import axios from 'axios'
 import * as yup from 'yup';
-import { BrowserRouter as Router, Link } from 'react-router-dom'
+//import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 //setting initial look of login form
 const initialLoginForm = { //initial State
@@ -24,7 +24,7 @@ const loginSchema = yup.object().shape({
   .required('Username is required'),
 password: yup
   .string()
-  .min(5, 'Password must be at least 5 characters')
+  .min(8, 'Password must be at least 8 characters')
   .required('Password is required')
 });
 

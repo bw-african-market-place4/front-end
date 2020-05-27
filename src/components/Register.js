@@ -1,194 +1,137 @@
 import React, { useState, useEffect } from 'react';
+//import axios from 'axios'
 import * as yup from 'yup';
-//import axios from 'axios'; 
+//import { BrowserRouter as Router, Link } from 'react-router-dom'
 
-const initialFormData = {
+//setting initial look of login form
+const initialRegForm = { //initial State
   username: '',
-  password: '',
-  email: '',
-  name: '',
-  businessName: '',
-  terms: '',
-};
+  password: ''
+}
 
-const initialFormErrors = {
-  username: '',
-  password: '',
-  email: '',
-  name: '',
-  businessName: '',
-  terms: '',
-};
+//setting initial errors of form with placeholders(?)
+const initialErrors = {
+  username:'A username is required',
+  password:'A password is required',
+  // name: 'A name is required',
+  // email: 'An email ir required',
+  // businessName: 'A business name is required',
+}
 
-const registerSchema = yup.object().shape({
+//schema of Login form with yup validation
+
+const regSchema = yup.object().shape({
   username: yup
-    .string()
-    .min(2, 'Username is required')
-    .required('Username is required'),
+  .string()
+  .min(3, 'Username must be at least 3 characters')
+  .required('Username is required'),
   password: yup
-    .string()
-    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-      "Password must be at least 8 characters, with one uppercase (ABC), one lowercase (abc), one number (1234) and one special case character (!*%$#^*,etc ...)"
-    )
-    .required('Password is required'),
-  email: yup
-    .string()
-    .email('Please use a valid email address')
-    .required('Email is required'),
-  name: yup
-    .string()
-    .min(3, 'Please enter your first and last name')
-    .required('Name is required'),
-  businessName: yup
-    .string()
-    .min(3, 'Please enter your business name')
-    .required('Business name is required'),
-  terms: yup
-  .boolean()
-  .required('Accepting the Terms of Service is required')
+  .string()
+  .min(8, 'Password must be at least 8 characters')
+  .required('Password is required'),
+  // name: yup
+  // .string()
+  // .min(3, 'Name must be at least 3 characters')
+  // .required('Username is required'),
+  // businessName: yup
+  // .string()
+  // .min(3, 'The business name must be at least 3 characters')
+  // .required('Username is required'),
 });
 
+const Register = (props) => {
+  //set states for reg (register), form errors, and button disable
+  const [ reg, setReg ] = useState(initialRegForm);
 
-const Register = () => {
-  
-  const [ formData, setFormData ] = useState(initialFormData);
-  const [ errors, setErrors ] = useState(initialFormErrors);
-  const [ disabled, setDisabled ] = useState(true);
+  const [ regErrors, setRegErrors] = useState(initialErrors);
 
-  //check to see if form is valid
+  //btn unavailable until form is filled correctly
+  const [ btnEnable, setBtnEnable ] = useState(false); 
+
+
+  //stop side effects
   useEffect(() => {
-    console.log('register form state changed');
-    registerSchema.isValid(formData).then(disable => {
-      setDisabled(!disable);
+    //if form is filled completely
+    regSchema.isValid(reg).then(valid => {
+      setBtnEnable(valid); //sets button to true
     })
-  })
+  }, [reg]) //focuses on login state
 
-  //onChange Event
-  const onChange = (e) => {
+  //when inouts change event handler
+  const onChange = e => {
     e.persist();
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value
-    });
+    //setLogin {copy login state, event target's name is event target's value}
+    setReg({...reg, [e.target.name]: e.target.value });
+
+    //yup validation
 
     yup
-    .reach(registerSchema, e.target.value)
-    .validate(e.target.value)
+    .reach(regSchema, e.target.name) //use login schema to check targets
+    .validate(e.target.value) // make sure they are valid
     .then(valid => {
-      setErrors({...errors, [e.target.name]: ''})
+      setRegErrors({...regErrors, [e.target.name]: ''});
     })
     .catch(err => {
-      setErrors({...errors, [e.target.name]: err.errors[0]});
-    });
+      setRegErrors({...regErrors, [e.target.name]: err.errors[0]
+      })
+    })
   };
 
-  //onSubmit Event
+  //when Login submit button is pressed
 
-  const onSubmit = (e) => {
-    e.preventDefault()
-    console.log(`Sucess!`)
-    // //axios stuff will go here
-    // .then(res =>{
-    //   //axios stuff
-    // })
-    // .catch(err => {
-    //   console.log('Something went wrong');
-    // });
+  const onSubmit = e => {
+    e.preventDefault();
+    console.log('Success!!')
+    alert('Submission succedded!'); //erase later, just a check to see if working
+    //axios goes here commented out til i get correct url
+    //axios.post('url', reg)
+    //.then(res => {
+      //axios stuff
+    //})
+    //.catch(err => {
+      //console.log('Registration was not successful', err);
+    //})
   };
-  
+
   return (
-    <div>
-      <h2> Register </h2>
-      <form>
-        <label>
-          Username:&nbsp;
+    <div className='container'>
+      <h1>Register</h1>
+      <form onSubmit={onSubmit}>
+        <div className='form-area'>
+          <label>Username:&nbsp;</label>
           <input
-          value={formData.username}
+          placeholder='username'
+          onChange={onChange}
           type='text'
           name='username'
-          id='username'
-          placeholder='Enter your username'
-          minLength='2'
-          maxLength='25'
-          onChange={onChange}
+          value={reg.username}
           />
-        </label>
 
-        <label>Password:&nbsp;
-         <input
-          value={formData.password}
+          <label>Password:&nbsp;</label>
+          <input
+          placeholder='password'
+          onChange={onChange}
           type='password'
           name='password'
-          id='password'
-          placeholder='Enter your password'
-          minLength='2'
-          maxLength='25'
-          onChange={onChange}
+          value={reg.password}
           />
-        </label>
 
-        <label>Email:&nbsp;
-          <input
-          value={formData.email}
-          type='text'
-          name='email'
-          id='email'
-          placeholder='Enter your email'
-          minLength='2'
-          maxLength='25'
-          onChange={onChange}
-          />
-        </label>
 
-        <label>Name:&nbsp;
-          <input
-          value={formData.name}
-          type='text'
-          name='name'
-          id='name'
-          placeholder='Enter your name'
-          minLength='2'
-          maxLength='25'
-          onChange={onChange}
-          />
-        </label>
 
-        <label>Business Name:&nbsp;
-          <input
-          value={formData.businessName}
-          type='text'
-          name='businessName'
-          id='businessName'
-          placeholder='Enter your business name'
-          minLength='2'
-          maxLength='25'
-          onChange={onChange}
-          />
-        </label>
-
-        <label>Do you accept the Terms of Service?&nbsp;
-          <input
-          type='checkbox'
-          name='terms'
-          id='terms'
-          checked={formData.terms}
-          onChange={onChange}
-          />
-        </label>
-        <div className='form-errors'>
-          {errors.username}
-          {errors.password}
-          {errors.name}
-          {errors.businessName}
-          {errors.email}
-          {errors.terms}
+          {/* //add on click event that links to whatever profile page */}
+          <button className='submitButton'
+          disabled={!btnEnable} type='submit'> Register</button>
+          <div className='form-errors'> {regErrors.username} </div>
+          <div className='form-errors'> {regErrors.password} </div>
 
         </div>
-
-        <button onClick={onSubmit} disabled={disabled} type='submit'>Submit</button>
       </form>
-      Already have a login? Put a LInk to link here
 
+      <div>
+        {/* //add link to Login  here using Link to after register pages is working */}
+        No account?  Login here.
+      </div>
+      
     </div>
   )
 }
