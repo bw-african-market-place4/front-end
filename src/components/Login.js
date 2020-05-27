@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import { ContainerDiv } from '../styled/Styled'
 //import axios from 'axios'
 import * as yup from 'yup';
 
@@ -84,7 +85,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className='container'>
+    <ContainerDiv>
       <h1>Login</h1>
       <form onSubmit={onSubmit}>
         <div className='form-area'>
@@ -119,7 +120,7 @@ const Login = (props) => {
         No account?  <Link to='/register'>Register here</Link>.
       </div>
       
-    </div>
+    </ContainerDiv>
   )
 }
 
