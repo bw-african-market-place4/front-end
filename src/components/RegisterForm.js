@@ -1,77 +1,176 @@
 import React, { useState, useEffect } from 'react';
 import * as yup from 'yup';
-//import axios from 'axios';
+//import axios from 'axios'; 
+
+// const registerSchema = yup.object().shape({
+//   username: yup
+//     .string()
+//     .min(2, 'Username is required')
+//     .required('Username is required'),
+//   password: yup
+//     .string()
+//     .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+//       "Password must be at least 8 characters, with one uppercase (ABC), one lowercase (abc), one number (1234) and one special case character (!*%$#^*,etc ...)"
+//     )
+//     .required('Password is required'),
+//   email: yup
+//     .string()
+//     .email('Please use a valid email address')
+//     .required('Email is required'),
+//   name: yup
+//     .string()
+//     .min(3, 'Please enter your first and last name')
+//     .required('Name is required'),
+//   businessName: yup
+//     .string()
+//     .min(3, 'Please enter your business name')
+//     .required('Business name is required'),
+//   terms: yup
+//   .boolean(true,'Please accept the Terms of Service')
+//   .required('Accepting the Terms of Service is required')
+// });
+
+const initialFormData = {
+  username: '',
+  password: '',
+  email: '',
+  name: '',
+  businessName: '',
+  terms: '',
+};
+
+const initialFormErrors = {
+  username: '',
+  password: '',
+  email: '',
+  name: '',
+  businessName: '',
+  terms: '',
+};
+
+const registerSchema = yup.object().shape({
+  username: yup
+    .string()
+    .min(2, 'Username is required')
+    .required('Username is required'),
+  password: yup
+    .string()
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+      "Password must be at least 8 characters, with one uppercase (ABC), one lowercase (abc), one number (1234) and one special case character (!*%$#^*,etc ...)"
+    )
+    .required('Password is required'),
+  email: yup
+    .string()
+    .email('Please use a valid email address')
+    .required('Email is required'),
+  name: yup
+    .string()
+    .min(3, 'Please enter your first and last name')
+    .required('Name is required'),
+  businessName: yup
+    .string()
+    .min(3, 'Please enter your business name')
+    .required('Business name is required'),
+  terms: yup
+  .boolean(true,'Please accept the Terms of Service')
+  .required('Accepting the Terms of Service is required')
+});
+
 
 const RegisterForm = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    email: '',
-    name: '',
-    businessName: '',
-    terms: '',
-  });
 
-  const [errors, setErrors] = useState({
-    username: '',
-    password: '',
-    email: '',
-    name: '',
-    businessName: '',
-    terms: '',
-  });
+  // const initialFormData = {
+  //   username: '',
+  //   password: '',
+  //   email: '',
+  //   name: '',
+  //   businessName: '',
+  //   terms: '',
+  // };
+  
+  // const initialFormErrors = {
+  //   username: '',
+  //   password: '',
+  //   email: '',
+  //   name: '',
+  //   businessName: '',
+  //   terms: '',
+  // };
+  
+  // const registerSchema = yup.object().shape({
+  //   username: yup
+  //     .string()
+  //     .min(2, 'Username is required')
+  //     .required('Username is required'),
+  //   password: yup
+  //     .string()
+  //     .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+  //       "Password must be at least 8 characters, with one uppercase (ABC), one lowercase (abc), one number (1234) and one special case character (!*%$#^*,etc ...)"
+  //     )
+  //     .required('Password is required'),
+  //   email: yup
+  //     .string()
+  //     .email('Please use a valid email address')
+  //     .required('Email is required'),
+  //   name: yup
+  //     .string()
+  //     .min(3, 'Please enter your first and last name')
+  //     .required('Name is required'),
+  //   businessName: yup
+  //     .string()
+  //     .min(3, 'Please enter your business name')
+  //     .required('Business name is required'),
+  //   terms: yup
+  //   .boolean(true,'Please accept the Terms of Service')
+  //   .required('Accepting the Terms of Service is required')
+  // });
+  
 
-  const [disabled, setDisabled] = useState(true);
-
-  const registerSchema = yup.object().shape({
-    username: yup
-      .string()
-      .min(2, 'Username is required')
-      .required('Username is required'),
-    password: yup
-      .string()
-      .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
-        "Password must be at least 8 characters, with one uppercase (ABC), one lowercase (abc), one number (1234) and one special case character (!*%$#^*,etc ...)"
-      )
-      .required('Password is required'),
-    email: yup
-      .string()
-      .email('Please use a valid email address')
-      .required('Email is required'),
-    name: yup
-      .string()
-      .min(3, 'Please enter your first and last name')
-      .required('Name is required'),
-    businessName: yup
-      .string()
-      .min(3, 'Please enter your business name')
-      .required('Business name is required'),
-    terms: yup
-    .boolean(true,'Please accept the Terms of Service')
-    .required('Accepting the Terms of Service is required')
-  });
+  const [ formData, setFormData ] = useState(initialFormData);
+  const [ errors, setErrors ] = useState(initialFormErrors);
+  const [ disabled, setDisabled ] = useState(true);
 
   //check to see if form is valid
   useEffect(() => {
     console.log('register form state changed');
-    registerSchema.isValid(formData).then(valid => {
-      setDisabled(!valid);
+    registerSchema.isValid(formData).then(disable => {
+      setDisabled(!disable);
     })
   })
 
   //onChange Event
   const onChange = (e) => {
+    e.persist();
     setFormData({
       ...formData,
       [e.target.name]: e.target.type === 'checkbox' ? e.target.checked : e.target.value
+    });
+
+    yup
+    .reach(registerSchema, e.target.value)
+    .validate(e.target.value)
+    .then(valid => {
+      setErrors({...errors, [e.target.name]: ''})
     })
-  }
+    .catch(err => {
+      setErrors({...errors, [e.target.name]: err.errors[0],});
+    });
+  };
 
   //onSubmit Event
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault()
     console.log(`Sucess!`)
-  }
+    // //axios stuff will go here
+    // .then(res =>{
+    //   //axios stuff
+    // })
+    // .catch(err => {
+    //   console.log('Something went wrong');
+    // });
+  };
+  
   return (
     <div>
       <h2> Register </h2>
@@ -163,7 +262,7 @@ const RegisterForm = () => {
 
         <button onClick={onSubmit} disabled={disabled}>Submit</button>
       </form>
-      Already have a login? <a href='#'>Click here</a>
+      Already have a login? Put a LInk to link here
 
     </div>
   )
