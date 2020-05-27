@@ -163,6 +163,7 @@ const Register = (props) => {
           onChange={onChange}
           type='checkbox'
           name='terms'
+          checked={reg.terms}
           value={reg.terms} 
           />
           <label>&nbsp; Terms of Service</label>
