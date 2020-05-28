@@ -106,7 +106,7 @@ const Register = (props) => {
   const onSubmit = e => {
     e.preventDefault();
     console.log('Success!!')
-    alert('Submission succedded!'); //erase later, just a check to see if working
+    alert('Submission succeded!'); //erase later, just a check to see if working
     //axios goes here commented out til i get correct url
     //axios.post('url', reg)
     //.then(res => {

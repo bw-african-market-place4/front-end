@@ -34,15 +34,21 @@ font-size: 1.2rem;
 overflow: hidden;
 `
 export const NavbarLi = styled.li`
-
 font-family: 'Nunito', sans-serif;
-color: #FEFEFE;
+width: 100%;
 
+margin: 0 3%;
+color: #FEFEFE;
 `
 //style on Nav links
 export const NavbarLink = styled(Link)`
 color: #FEFEFE;
+display: block;
 text-decoration: none;
+
+&:focus, &:hover, &:active {
+  color: #E84C3D;
+}
 `
 //Forms
 export const ContainerFormDiv = styled.div`
@@ -61,10 +67,13 @@ display: block;
 width: 90%;
 padding: 0.4rem;
 border: 1px solid #333;
+border-radius: 2px;
 margin: 2% auto;
+
+}
 `
 export const StyleLabel = styled.label`
-font-size: 1rem;
+font-size: 1.2rem;
 font-family: 'Nunito', sans-serif;
 `
 //error div text
@@ -84,17 +93,25 @@ text-align: center;
 //buttons
 
 export const StyleBtns = styled.button`
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #F3F3F3;
     background-color: #E84C3D;
     padding: 1.5% 3%;
     border: 1px solid #333333;
     border-radius: 2px;
     margin: 1%;
+
+    &:hover, &:active {
+      background-color: #333333;
+    }
 `
 
 //style the Links not in Navbar
 export const StyleLink = styled(Link)`
   text-decoration: none;
   color: #E84C3D;
+
+  &:hover, &:active {
+    color: #333333;
+  }
 `

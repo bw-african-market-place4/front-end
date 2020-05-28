@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import { NavbarDiv, NavbarUl, NavbarLi, NavbarLink } from '../styled/Styled'
 
 const Navbar = () => {
