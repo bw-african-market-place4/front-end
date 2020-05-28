@@ -116,7 +116,7 @@ const Login = (props) => {
       </form>
 
       <StyleP>
-        {/* //add link to Register here using Link to after register pages is working */}
+        
         No account?  <StyleLink to='/register'>Register here</StyleLink>.
       </StyleP>
       
