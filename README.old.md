@@ -15,5 +15,10 @@ Tasks 05/27/2020
 - Deployed to Netlify
 
 
+Task 05/28/2020
+- fixed redirect issue on Netlify
+- changed placeholder names 
+
+
 
 
