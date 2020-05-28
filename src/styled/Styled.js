@@ -81,5 +81,11 @@ text-align: center;
 //buttons
 
 export const StyleBtns = styled.button`
-
+    font-size: 1rem;
+    color: #F3F3F3;
+    background-color: #E84C3D;
+    padding: 1.5% 3%;
+    border: 1px solid #333333;
+    border-radius: 2px;
+    margin: 1%;
 `

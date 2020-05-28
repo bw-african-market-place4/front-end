@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
-import { ContainerFormDiv, StyleP, StyleError, StyleInput, StyleLabel } from '../styled/Styled'
+import { ContainerFormDiv, StyleP, StyleError, StyleInput, StyleLabel, StyleBtns } from '../styled/Styled'
 //import axios from 'axios'
 import * as yup from 'yup';
 
@@ -107,8 +107,8 @@ const Login = (props) => {
           value={login.password}
           />
           {/* //add on click event that links to whatever profile page */}
-          <button className='submitButton'
-          disabled={!btnEnable} type='submit'> Login</button>
+          <StyleBtns className='submitButton'
+          disabled={!btnEnable} type='submit'> Login</StyleBtns>
           <StyleError> {loginErrors.username} </StyleError>
           <StyleError> {loginErrors.password} </StyleError>
 
