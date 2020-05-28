@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
-import { ContainerFormDiv, StyleP, StyleError, StyleInput, StyleLabel } from '../styled/Styled'
+//import { Link } from 'react-router-dom'
+import { ContainerFormDiv, StyleP, StyleError, StyleInput, StyleLabel, StyleBtns, StyleLink } from '../styled/Styled'
 //import axios from 'axios'
 import * as yup from 'yup';
 
@@ -73,7 +73,7 @@ const Login = (props) => {
   const onSubmit = e => {
     e.preventDefault();
     console.log('Success!!')
-    alert('Submission succedded!'); //erase later, just a check to see if working
+    alert('Submission succeded!'); //erase later, just a check to see if working
     //axios goes here commented out til i get correct url
     //axios.post('url', login)
     //.then(res => {
@@ -107,8 +107,8 @@ const Login = (props) => {
           value={login.password}
           />
           {/* //add on click event that links to whatever profile page */}
-          <button className='submitButton'
-          disabled={!btnEnable} type='submit'> Login</button>
+          <StyleBtns className='submitButton'
+          disabled={!btnEnable} type='submit'> Login</StyleBtns>
           <StyleError> {loginErrors.username} </StyleError>
           <StyleError> {loginErrors.password} </StyleError>
 
@@ -117,7 +117,7 @@ const Login = (props) => {
 
       <StyleP>
         {/* //add link to Register here using Link to after register pages is working */}
-        No account?  <Link to='/register'>Register here</Link>.
+        No account?  <StyleLink to='/register'>Register here</StyleLink>.
       </StyleP>
       
     </ContainerFormDiv>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ContainerFormDiv, StyleInput, StyleLabel, StyleError, StyleP } from '../styled/Styled';
+//import { Link } from 'react-router-dom';
+import { ContainerFormDiv, StyleInput, StyleLabel, StyleError, StyleP, StyleBtns, StyleLink, } from '../styled/Styled';
 //import axios from 'axios'
 import * as yup from 'yup';
 //import { BrowserRouter as Router, Link } from 'react-router-dom'
@@ -106,7 +106,7 @@ const Register = (props) => {
   const onSubmit = e => {
     e.preventDefault();
     console.log('Success!!')
-    alert('Submission succedded!'); //erase later, just a check to see if working
+    alert('Submission succeded!'); //erase later, just a check to see if working
     //axios goes here commented out til i get correct url
     //axios.post('url', reg)
     //.then(res => {
@@ -176,23 +176,22 @@ const Register = (props) => {
 
           <StyleLabel>&nbsp; Do you accept to the Terms of Service?</StyleLabel> 
 
-          {/* //add on click event that links to whatever profile page */}
-          <div><button className='submitButton'
-          disabled={!btnEnable} type='submit'> Register</button></div>
+          {/* //add on click event that links to whatever api */}
+          <div><StyleBtns className='submitButton'
+          disabled={!btnEnable} type='submit'> Register</StyleBtns></div>
+
           <StyleError> {regErrors.username} </StyleError>
           <StyleError> {regErrors.password} </StyleError>
           <StyleError> {regErrors.name} </StyleError>
           <StyleError> {regErrors.businessName} </StyleError>
           <StyleError> {regErrors.email} </StyleError>
-          
-       
 
         </div>
       </form>
 
       <StyleP>
      
-        No account?  <Link to='/'>Login here.</Link>
+        No account?  <StyleLink to='/'>Login here.</StyleLink>
       </StyleP>
       
     </ContainerFormDiv>
