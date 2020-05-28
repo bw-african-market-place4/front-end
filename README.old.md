@@ -6,8 +6,14 @@ Tasks 05/26/2020
 - made base register form
 - set onChange event handler for base register form
 - installed yup for validation
-- installed axios for api
-- Login page works need to add links to sucessful submission, using axios, and links to login page
+- installed axios for api (for React 2 person set up)
+- Login and Register page works. Need to add links to successful submission, using axios, and links to login page
+
+Tasks 05/27/2020
+- Added Links to pages
+- Styled pages
+- Deployed to Netlify
+
 
 
 
