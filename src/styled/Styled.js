@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 //App
 export const ContainerDiv = styled.div`
 display:flex;
@@ -7,12 +9,11 @@ width: 100%;
 font-size: 62.5%;
 font-family: 'Nunito', sans-serif;
 background-color: #FEFEFE;
-height: 100%;
 margin: 0 auto;
 padding: 0;
 `
 
-//Navbar
+//Navbar 
 
 export const NavbarDiv = styled.div`
 background: #333;
@@ -25,21 +26,23 @@ padding: 1% 0;
 
 export const NavbarUl = styled.ul`
 list-style-type: none;
+display: flex;
+justify-content: flex-end;
 margin: 0;
-padding: 0;
+padding: 1%;
 font-size: 1.2rem;
 overflow: hidden;
 `
 export const NavbarLi = styled.li`
-display: inline;
-text-align: right;
+
 font-family: 'Nunito', sans-serif;
 color: #FEFEFE;
 
 `
-//work on Nav links
-export const NavbarLink = styled.a`
+//style on Nav links
+export const NavbarLink = styled(Link)`
 color: #FEFEFE;
+text-decoration: none;
 `
 //Forms
 export const ContainerFormDiv = styled.div`
@@ -88,4 +91,10 @@ export const StyleBtns = styled.button`
     border: 1px solid #333333;
     border-radius: 2px;
     margin: 1%;
+`
+
+//style the Links not in Navbar
+export const StyleLink = styled(Link)`
+  text-decoration: none;
+  color: #E84C3D;
 `

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
-import { ContainerFormDiv, StyleP, StyleError, StyleInput, StyleLabel, StyleBtns } from '../styled/Styled'
+//import { Link } from 'react-router-dom'
+import { ContainerFormDiv, StyleP, StyleError, StyleInput, StyleLabel, StyleBtns, StyleLink } from '../styled/Styled'
 //import axios from 'axios'
 import * as yup from 'yup';
 
@@ -117,7 +117,7 @@ const Login = (props) => {
 
       <StyleP>
         {/* //add link to Register here using Link to after register pages is working */}
-        No account?  <Link to='/register'>Register here</Link>.
+        No account?  <StyleLink to='/register'>Register here</StyleLink>.
       </StyleP>
       
     </ContainerFormDiv>

@@ -8,14 +8,14 @@ import Login from './components/Login';
 function App() {
   return (
     <Router>
-      <div className='App'>
+      
     <ContainerDiv>
     <Navbar />
   <Route exact path='/' component={Login} />
   <Route exact path='/register' component={Register} />
  
     </ContainerDiv>
-    </div>
+    
     </Router>
   );
 }
