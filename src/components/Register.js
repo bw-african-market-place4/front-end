@@ -9,7 +9,7 @@ import {
   StyleBtns,
   StyleLink
 } from "../styled/Styled";
-//import axios from 'axios'
+import axiosWithAuth from "../utils/axiosWithAuth";
 import * as yup from "yup";
 //import { BrowserRouter as Router, Link } from 'react-router-dom'
 
@@ -113,7 +113,7 @@ const Register = props => {
     console.log("Success!!");
     alert("Submission succeded!"); //erase later, just a check to see if working
     //axios goes here commented out til i get correct url
-    axios
+    axiosWithAuth
       .post("https://afmarket.herokuapp.com/api/auth/register", reg)
       .then(res => console.log(res))
       .catch(err => {
