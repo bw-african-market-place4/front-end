@@ -18,26 +18,22 @@ padding: 0;
 export const NavbarDiv = styled.div`
 background: #333;
 display: flex;
-flex-wrap: nowrap;
+flex-flow: row nowrap;
 justify-content: flex-end;
 width: 100%;
 padding: 1% 0;
+margin: 0;
 `
 
 export const NavbarUl = styled.ul`
 list-style-type: none;
 display: flex;
-justify-content: flex-end;
+font-size: 1rem;
+padding:0;
 margin: 0;
-padding: 1%;
-font-size: 1.2rem;
-overflow: hidden;
 `
 export const NavbarLi = styled.li`
 font-family: 'Nunito', sans-serif;
-width: 100%;
-
-margin: 0 3%;
 color: #FEFEFE;
 `
 //style on Nav links
@@ -45,6 +41,8 @@ export const NavbarLink = styled(Link)`
 color: #FEFEFE;
 display: block;
 text-decoration: none;
+padding: .6rem 1rem;
+transition: all .5s ease;
 
 &:focus, &:hover, &:active {
   color: #E84C3D;
@@ -100,6 +98,7 @@ export const StyleBtns = styled.button`
     border: 1px solid #333333;
     border-radius: 2px;
     margin: 1%;
+    transition: all .5s ease;
 
     &:hover, &:active {
       background-color: #333333;
@@ -110,6 +109,7 @@ export const StyleBtns = styled.button`
 export const StyleLink = styled(Link)`
   text-decoration: none;
   color: #E84C3D;
+  transition: all .5s ease;
 
   &:hover, &:active {
     color: #333333;
