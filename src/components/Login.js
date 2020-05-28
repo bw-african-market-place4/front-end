@@ -17,7 +17,7 @@ const initialErrors = {
   password:'A password is required'
 }
 
-//schema of Login form with yup validation
+//schema of Login form with yup validation.
 
 const loginSchema = yup.object().shape({
   username: yup
