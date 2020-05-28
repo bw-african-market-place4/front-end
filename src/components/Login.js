@@ -75,13 +75,12 @@ const Login = (props) => {
     console.log('Success!!')
     alert('Submission succeded!'); //erase later, just a check to see if working
     //axios goes here commented out til i get correct url
-    //axios.post('url', login)
-    //.then(res => {
-      //axios stuff
-    //})
-    //.catch(err => {
-      //console.log('Login was not successful', err);
-    //})
+    axiosWithAuth
+      .post("https://afmarket.herokuapp.com/api/auth/login", login)
+      .then(res => console.log(res))
+      .catch(err => {
+        console.log("Login was not successful", err);
+      });∂
   };
 
   return (
