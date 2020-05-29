@@ -191,7 +191,7 @@ const Register = (props) => {
 
       <StyleP>
      
-        No account?  <StyleLink to='/'>Login here.</StyleLink>
+        No account? <StyleLink to='/'>Login here.</StyleLink>
       </StyleP>
       
     </ContainerFormDiv>
