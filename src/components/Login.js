@@ -126,7 +126,11 @@ const Login = props => {
       </form>
 
       <StyleP>
-        No account? <StyleLink to="/register">Register here</StyleLink>.
+
+
+        
+        No account?  <StyleLink to='/register'>Register here</StyleLink>.
+
       </StyleP>
     </ContainerFormDiv>
   );
