@@ -146,7 +146,7 @@ const Register = props => {
 
           <StyleLabel>Name:&nbsp;</StyleLabel>
           <StyleInput
-            placeholder="Fluffy McKitty"
+            placeholder="Dio Brando"
             onChange={onChange}
             type="text"
             name="name"
@@ -155,7 +155,7 @@ const Register = props => {
 
           <StyleLabel>Business Name:&nbsp;</StyleLabel>
           <StyleInput
-            placeholder="Catnip"
+            placeholder="Get Ripped"
             onChange={onChange}
             type="text"
             name="businessName"
@@ -164,7 +164,7 @@ const Register = props => {
 
           <StyleLabel>Email:&nbsp;</StyleLabel>
           <StyleInput
-            placeholder="cats@arecute.com"
+            placeholder="itisi@dio.com"
             onChange={onChange}
             type="email"
             name="email"
