@@ -113,7 +113,7 @@ const Register = props => {
     console.log("Success!!");
     alert("Submission succeded!"); //erase later, just a check to see if working
 
-    axiosWithAuth
+    axiosWithAuth()
       .post("https://afmarket.herokuapp.com/api/auth/register", reg)
       .then(res => {
         setReg(res.username);
