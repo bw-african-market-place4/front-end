@@ -9,8 +9,7 @@ const AddItem = () => {
       axiosWithAuth()
         .get("https://afmarket.herokuapp.com/api/items")
         .then(res => {
-          console.log("from addItem", res.data);
-          //setAddItem(res);
+          setAddItem(res.data);
         })
         .catch(err => {
           console.log("error", err.response);
@@ -21,7 +20,8 @@ const AddItem = () => {
 
   return (
     <>
-      <p></p>
+      <p>{addItem}</p>
+      <button onClick={() => addItem}>Add</button>
     </>
   );
 };

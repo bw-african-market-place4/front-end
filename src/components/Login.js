@@ -83,7 +83,10 @@ const Login = props => {
     //axios goes here commented out til i get correct url
     axiosWithAuth
       .post("https://afmarket.herokuapp.com/api/auth/login", login)
-      .then(res => console.log(res))
+      .then(res => {
+        localStorage.setItem("token", res.data.token);
+        props.history.push("");
+      })
       .catch(err => {
         console.log("Login was not successful", err);
       });
@@ -126,11 +129,7 @@ const Login = props => {
       </form>
 
       <StyleP>
-
-
-        
-        No account?  <StyleLink to='/register'>Register here</StyleLink>.
-
+        No account? <StyleLink to="/register">Register here</StyleLink>.
       </StyleP>
     </ContainerFormDiv>
   );
