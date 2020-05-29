@@ -11,6 +11,7 @@ import {
 } from "../styled/Styled";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import * as yup from "yup";
+import MainPage from "./MainPage";
 
 //setting initial look of login form
 const initialLoginForm = {
@@ -85,7 +86,7 @@ const Login = props => {
       .post("https://afmarket.herokuapp.com/api/auth/login", login)
       .then(res => {
         localStorage.setItem("token", res.data.token);
-        props.history.push("");
+        props.history.push(MainPage);
       })
       .catch(err => {
         console.log("Login was not successful", err);
