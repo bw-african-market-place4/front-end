@@ -16,33 +16,35 @@ export const ContainerDiv = styled.div`
 //Navbar
 
 export const NavbarDiv = styled.div`
-  background: #333;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: flex-end;
-  width: 100%;
-  padding: 1% 0;
-  margin: 0;
-`;
+
+background: #333;
+display: flex;
+flex-flow: row nowrap;
+justify-content: flex-end;
+width: 100%;
+padding: 1% 0;
+margin: 0;
+`
 
 export const NavbarUl = styled.ul`
-  list-style-type: none;
-  display: flex;
-  font-size: 1rem;
-  padding: 0;
-  margin: 0;
-`;
+list-style-type: none;
+display: flex;
+font-size: 1rem;
+padding:0;
+margin: 0;
+`
 export const NavbarLi = styled.li`
-  font-family: "Nunito", sans-serif;
-  color: #fefefe;
-`;
+font-family: 'Nunito', sans-serif;
+color: #FEFEFE;
+`
 //style on Nav links
 export const NavbarLink = styled(Link)`
-  color: #fefefe;
-  display: block;
-  text-decoration: none;
-  padding: 0.6rem 1rem;
-  transition: all 0.5s ease;
+color: #FEFEFE;
+display: block;
+text-decoration: none;
+padding: .6rem 1rem;
+transition: all .5s ease;
+
 
   &:focus,
   &:hover,
@@ -93,14 +95,15 @@ export const StyleP = styled.p`
 //buttons
 
 export const StyleBtns = styled.button`
-  font-size: 1.2rem;
-  color: #f3f3f3;
-  background-color: #e84c3d;
-  padding: 1.5% 3%;
-  border: 1px solid #333333;
-  border-radius: 2px;
-  margin: 1%;
-  transition: all 0.5s ease;
+
+    font-size: 1.2rem;
+    color: #F3F3F3;
+    background-color: #E84C3D;
+    padding: 1.5% 3%;
+    border: 1px solid #333333;
+    border-radius: 2px;
+    margin: 1%;
+    transition: all .5s ease;
 
   &:hover,
   &:active {
@@ -111,8 +114,10 @@ export const StyleBtns = styled.button`
 //style the Links not in Navbar
 export const StyleLink = styled(Link)`
   text-decoration: none;
-  color: #e84c3d;
-  transition: all 0.5s ease;
+
+  color: #E84C3D;
+  transition: all .5s ease;
+
 
   &:hover,
   &:active {

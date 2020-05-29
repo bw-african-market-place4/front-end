@@ -146,29 +146,34 @@ const Register = props => {
 
           <StyleLabel>Name:&nbsp;</StyleLabel>
           <StyleInput
-            placeholder="Dio Brando"
-            onChange={onChange}
-            type="text"
-            name="name"
-            value={reg.name}
+
+          placeholder='Dio Brando'
+          onChange={onChange}
+          type='text'
+          name='name'
+          value={reg.name} 
           />
 
           <StyleLabel>Business Name:&nbsp;</StyleLabel>
           <StyleInput
-            placeholder="Get Ripped"
-            onChange={onChange}
-            type="text"
-            name="businessName"
-            value={reg.businessName}
+
+          placeholder='Get Ripped'
+          onChange={onChange}
+          type='text'
+          name='businessName'
+          value={reg.businessName} 
+
           />
 
           <StyleLabel>Email:&nbsp;</StyleLabel>
           <StyleInput
-            placeholder="itisi@dio.com"
-            onChange={onChange}
-            type="email"
-            name="email"
-            value={reg.email}
+
+          placeholder='itisi@dio.com'
+          onChange={onChange}
+          type='email'
+          name='email'
+          value={reg.email} 
+
           />
 
           <input
@@ -201,7 +206,10 @@ const Register = props => {
       </form>
 
       <StyleP>
-        No account? <StyleLink to="/">Login here.</StyleLink>
+
+     
+        No account? <StyleLink to='/'>Login here.</StyleLink>
+
       </StyleP>
     </ContainerFormDiv>
   );
