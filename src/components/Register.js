@@ -112,7 +112,7 @@ const Register = props => {
     e.preventDefault();
     console.log("Success!!");
     alert("Submission succeded!"); //erase later, just a check to see if working
-    //axios goes here commented out til i get correct url
+
     axiosWithAuth
       .post("https://afmarket.herokuapp.com/api/auth/register", reg)
       .then(res => console.log(res))

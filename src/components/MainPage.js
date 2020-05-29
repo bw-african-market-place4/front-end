@@ -7,7 +7,7 @@ const MainPage = () => {
   axios
     .get("https://api.github.com/users/Callisto1981/followers")
     .then(res => {
-      console.log(res);
+      console.log(res.data);
     })
     .catch(err => console.log(err));
 

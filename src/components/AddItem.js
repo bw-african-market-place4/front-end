@@ -7,9 +7,10 @@ const AddItem = () => {
   useEffect(() => {
     const getAddItem = () => {
       axiosWithAuth()
-        .get("http://localhost:5000/api/colors")
+        .get("https://afmarket.herokuapp.com/api/items")
         .then(res => {
-          setAddItem(res);
+          console.log("from addItem", res.data);
+          //setAddItem(res);
         })
         .catch(err => {
           console.log("error", err.response);
